@@ -60,6 +60,8 @@
    display: none;
  }
 
+
+
  @media screen and (max-width: 600px) {
    .topnav.responsive {position: relative;}
    .topnav.responsive a.icon {
@@ -73,6 +75,29 @@
      text-align: left;
    }
  }
+
+/*video div container*/
+ #projectVideo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#projectVideo h2 {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+#projectVideo #videodiv {
+  display: flex;
+  justify-content: center;
+}
+
+#videodiv iframe {
+  border: none;
+}
+
 /* General Reset */
 * {
   margin: 0;
