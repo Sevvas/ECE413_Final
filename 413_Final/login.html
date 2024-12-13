@@ -7,24 +7,63 @@
    <link href="index.css" rel="stylesheet">
 </head>
 <body>
-    <!--Navbar-->
+    <!-- Navbar -->
     <div class="topnav" id="myTopnav">
         <a href="index.html">Home</a>
         <a href="login.html" class="active">Login</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
           <i class="fa fa-bars"></i>
         </a>
+    </div>
+
+
+    <main>
+      <!--Login Signup Form-->
+    <header>
+      <h1>Login or Signup</h1>
+      <div class="toggle-buttons">
+          <button id="login-btn">Login</button>
+          <button id="signup-btn">Signup</button>
       </div>
+  </header>
 
+        <!-- Login Form -->
+        <form id="login-form">
+          
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email"><br><br>
+            <label for="pwd">Password:</label><br>
+            <input type="password" id="pwd" name="pwd" minlength="8"><br><br>
+            <input type="submit" value="Login">
+        </form>
 
+        <!-- Signup Form -->
+        <form id="signup-form" style="display: none;">
+            <label for="email-signup">Email:</label><br>
+            <input type="email" id="email-signup" name="email-signup"><br><br>
+            <label for="pwd-signup">Password:</label><br>
+            <input type="password" id="pwd-signup" name="pwd-signup" minlength="8"><br><br>
+            <label for="confirm-pwd">Confirm Password:</label><br>
+            <input type="password" id="confirm-pwd" name="confirm-pwd" minlength="8"><br><br>
+            <input type="submit" value="Signup">
+        </form>
+    </main>
 
-<form>
-    <label for="email">Email:</label><br>
-    <input type="email" id="email" name="email"><br><br>
-    <label for="pwd">Password:</label><br>
-    <input type="password" id="pwd" name="pwd" minlength="8"><br><br>
-    <input type="submit" value ="Submit">
+    <script>
+        const loginBtn = document.getElementById('login-btn');
+        const signupBtn = document.getElementById('signup-btn');
+        const loginForm = document.getElementById('login-form');
+        const signupForm = document.getElementById('signup-form');
 
-</from>
+        loginBtn.addEventListener('click', () => {
+            loginForm.style.display = 'block';
+            signupForm.style.display = 'none';
+        });
+
+        signupBtn.addEventListener('click', () => {
+            signupForm.style.display = 'block';
+            loginForm.style.display = 'none';
+        });
+    </script>
 </body>
 </html>
