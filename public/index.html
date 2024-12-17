@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="../stylesheets/index.css" rel="stylesheet">   
+    <!-- <link href="stylesheets/site.css" rel="stylesheet">-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>ECE 413/513</title>
+
+    <script>
+        //logout listner, removes token
+    document.getElementById('logout').addEventListener('click', function () {
+    localStorage.removeItem('token');
+    window.location.href = 'index.html';
+});
+
+    </script>
+
+    
+</head>
+<body>
+    <!--NAVBAR-->
+    <nav class="nav-wrapper bg-az-blue lighten-4" role="navigation">
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html">Sign-Up</a></li>
+                <li><a id="logout" href="index.html">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    
+    <div id="container">
+        <div class="row">
+            <div class = "team center-align">
+            <img src="\images\Tyler.jpeg" alt="Tyler Photo" height="100px" width="100px"> <!-- Make folder in server-->
+            <h6>Tyler Thursby</h6>
+            <p>tylerthursby@arizona.edu</p>   
+            </div>
+
+        <div class ="team center-align">
+            <img src="\images\Hannah.jpg" alt="Hannah Photo" height="100px" width="100px">
+            <h6>Hannah Spallas</h6>
+            <p>hannahspallas@arizona.edu</p>
+        </div>
+
+        <div class ="team center-align">
+            <img src="\images\Sebastian.jpg" alt="Sebastian Photo" height="100px" width="100px">
+            <h6>Sebastian Robinson</h6>
+            <p>sjrobinson@arizona.edu</p>
+        </div>
+     </div>
+    </div>
+
+     <div id ="projectVideo">
+        <div class = "video center-align">
+            <h2>Demo Pitch</h2>
+            <div id="videodiv">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/reGmGfYOhEA?si=MudU8TDDjoWBsn4k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div id ="projectVideo"></div>
+        <div class = "video center-align">
+            <h2>Demo Video</h2>
+            <div id="videodiv">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/CLvr9R_17fI?si=xPnCr0xk_s1mVTm7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <footer class="page-footer bg-az-red darken-2">
+    </footer>
+</body>
+</html> 

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="javascripts/dashboard.js"></script>
+
+<!--For Navbar-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="../stylesheets/index.css" rel="stylesheet">   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<style>
+    body {
+        background-color: white;
+        font-family: Arial;
+    }
+
+
+    h1 {
+        text-align: center;
+    }
+
+
+    /* Text Buttons: https://www.w3schools.com/howto/howto_css_text_buttons.asp */
+    .btn {
+        border: none;
+        background-color: inherit;
+        padding: 4px 14px;
+        font-size: 15px;
+        cursor: pointer;
+        display: inline-block;
+        color: blue;
+    }
+
+
+    .btn:hover {
+        background: #b7f2f8;
+    }
+
+
+    div,
+    table {
+        box-sizing: border-box;
+
+
+    }
+
+
+    .container {
+        margin: 2vh 5vw;
+        width: 90vw;
+        text-align: center;
+    }
+
+
+    table {
+        width: 90%;
+        height: 12vh;
+        table-layout: fixed;
+        border-collapse: collapse;
+        margin: 5px 5%;
+        font-size: 15px;
+    }
+
+
+    td {
+        overflow: hidden;
+        border: 1px solid gray;
+        text-align: center;
+        height: 50%;
+        padding: 5px;
+        color: black;
+    }
+
+
+    #chart1 {
+        display: inline-block;
+        width: 30%;
+        height: 45vh;
+        border: 1px solid gray;
+    }
+
+
+    #chart2 {
+        display: inline-block;
+        width: 70%;
+        height: 45vh;
+        float: right;
+        border: 1px solid gray;
+    }
+
+
+    #rxData {
+        margin: 0 5vw;
+        width: 90vw;
+        height: 40vh;
+    }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+
+
+
+    var gRxData = {
+        day: {},
+        bpm: {},
+
+    };
+
+
+    var gCharts = {
+        doughnut: null,
+        barLine: null
+    };
+
+
+    function makeUrl(option) {
+        let curUrl = gCtrlVar.baseUrl;
+
+
+        switch (option) {
+            case 'day':
+                curUrl += 'day/' + gCtrlVar.day + '.json' + '?apiKey=' + gCtrlVar.apiKey;
+                break;
+        }
+
+
+        return curUrl;
+    }
+
+
+    function httpGet(theUrl, option) {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.addEventListener("load", function () { displayResult(this, option) });
+        xmlHttp.open("GET", theUrl, true); // true for asynchronous request
+        xmlHttp.send();
+    }
+
+
+    function displayResult(evt, option) {
+        if (evt.status == 200) {
+            document.getElementById('rxData').innerHTML = JSON.stringify(JSON.parse(evt.responseText), null, 2);
+            if (option in gRxData) gRxData[option] = JSON.parse(evt.responseText);
+            if ((option === 'day') || (option === 'week')) updateTable(option);
+
+        }
+        else {
+            document.getElementById('rxData').innerHTML = 'rx error';
+        }
+    }
+
+
+    function getData(option) {
+        let curUrl = makeUrl(option);
+        if (curUrl != null) {
+            httpGet(curUrl, option);
+        }
+    }
+
+
+</script>
+</head>
+
+
+<body>
+     <!--NAVBAR-->
+     <nav class="nav-wrapper bg-az-blue lighten-4" role="navigation">
+         <div class="container">
+             <ul class="nav-links">
+                 <li><a href="index.html">Home</a></li>
+                 <li><a href="login.html">Login</a></li>
+                 <li><a id="logout" href="index.html">Logout</a></li>
+                 <li><a href="account.html">Account</a></li>
+             </ul>
+         </div>
+     </nav>
+
+
+     <div>
+<h1>User Dashboard</h1>
+ <br/>   
+</div>
+<div class="container">
+        <button class="btn" data-action="day">Single day</button>
+        <button class="btn" data-action="week">Week</button>
+ </div>
+
+
+<div class="container">
+    <table id="county_table">
+        <caption>BPM dashboard</caption>
+        <tr>
+            <td>Minimum BPM</td>
+            <td>Maximum BPM</td>
+            <td>Average BPM</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+<div class="container">
+    <div id="chart1">
+        <canvas id="doughnutChart"></canvas>
+    </div>
+    <div id="chart2">
+        <canvas id="barLineChart"></canvas>
+    </div>
+</div>
+</body>
+
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sign up</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="javascripts/signup.js"></script>
+
+    <!--For Navbar-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="../stylesheets/index.css" rel="stylesheet">   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </head>
+  <body>
+
+        <!--NAVBAR-->
+        <nav class="nav-wrapper bg-az-blue lighten-4" role="navigation">
+          <div class="container">
+              <ul class="nav-links">
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="login.html">Login</a></li>
+              </ul>
+          </div>
+      </nav>
+
+      <div>
+        <h1>Sign Up</h1><br/>
+        <div>
+          
+          <div>
+            <label for="email">Email: </label>
+            <input type="text" id="email" placeholder="Enter email" name="email">
+          </div>
+          <div>
+            <label for="password">Password: </label>
+            <input type="password" id="password" placeholder="Enter password" name="password">
+          </div>
+          <div>
+            <label for="confirmPassword">Confirm Password: </label>
+            <input type="password" id="confirmPassword" placeholder="Confirm password" name="passwordConfirm">
+          </div>
+        <br/><button id="btnSignUp">Sign Up</button>
+      </div>
+    </div>
+    <div style="display:inline-block; width:45vw; height: 60vh; margin: 2vh 20vw; ">
+      <label for="rxData">Message: </label>
+      <textarea id="rxData" style="width:100%; height:100%"></textarea>
+    </div>
+  </body>
+</html>
